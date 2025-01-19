@@ -42,4 +42,5 @@ public class UserService {
     public void deleteUser(Integer applicationId) {
         repository.deleteById(applicationId);
     }
+    service
 }

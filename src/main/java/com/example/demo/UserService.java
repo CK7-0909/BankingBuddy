@@ -42,5 +42,7 @@ public class UserService {
     public void deleteUser(Integer applicationId) {
         repository.deleteById(applicationId);
     }
-    service
+    public class checkDuplicate(Optional<Integer> applicationId, Optional<String> firstName, Optional<String> lastName, Optional<String> dob) {
+
+    }
 }

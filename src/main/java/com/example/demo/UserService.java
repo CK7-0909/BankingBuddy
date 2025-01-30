@@ -14,12 +14,15 @@ public class UserService {
     private  Repository repository;
 
     // Used for PostMapping
-    public User createUser(String firstname, String lastname, String dob) {
+    public User createUser(String firstname, String lastname, String dob, double bankBalance, String country, int creditAge) {
         User user = new User();
         // Will mysql automatically assign an id?
         user.setfirstname(firstname);
         user.setlastname(lastname);
         user.setdob(dob);
+        user.setBankBalance(bankBalance);
+        user.setcountry(country);
+        user.setcreditAge(creditAge);
         return repository.save(user); // Save is a function part of the JPA repository
     }
 

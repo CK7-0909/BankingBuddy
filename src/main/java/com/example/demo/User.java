@@ -10,6 +10,7 @@ import java.util.Optional;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int applicationId;
     private String firstname;
     private String lastname;
     private String dob;
@@ -66,4 +67,11 @@ public class User {
         this.creditAge = creditAge;
     }
 
+    public int getApplicationId() {
+        return applicationId;
+    }
+
+    public void setApplicationId(int applicationId) {
+        this.applicationId = applicationId;
+    }
 }

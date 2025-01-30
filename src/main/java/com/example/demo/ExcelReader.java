@@ -31,7 +31,6 @@ public class ExcelReader {
             user.setcreditAge(Integer.parseInt(record.get("CreditAge")));
             users.add(user);
             }
-
         return users;
     }
 }

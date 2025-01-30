@@ -10,11 +10,9 @@ import java.util.Optional;
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "applicationId")
-    private Integer applicationId;
     private String firstname;
     private String lastname;
-    private Date dob;
+    private String dob;
     private double bankBalance;
     private String country;
     private int creditAge;
@@ -22,8 +20,7 @@ public class User {
     public User() {
     }
 
-    public User(Integer applicationId, String firstName, String lastName, Date dob, double bankBalance, String country, int creditAge) {
-        this.applicationId = applicationId;
+    public User(String firstName, String lastName, String dob, double bankBalance, String country, int creditAge) {
         this.firstname = firstName;
         this.lastname = lastName;
         this.dob = dob;
@@ -32,21 +29,6 @@ public class User {
         this.creditAge = creditAge;
     }
 
-    public User(String firstName, String lastName, Date dob, double bankBalance, String country, int creditAge) {
-        this.firstname = firstName;
-        this.lastname = lastName;
-        this.dob = dob;
-        this.bankBalance = bankBalance;
-        this.country = country;
-        this.creditAge = creditAge;
-    }
-
-    public int getapplicationId() {
-        return applicationId;
-    }
-    public void setapplicationId(int applicationId) {
-        this.applicationId = applicationId;
-    }
     public String getfirstname() {
         return firstname;
     }
@@ -59,10 +41,10 @@ public class User {
     public void setlastname(String lastname) {
         this.lastname = lastname;
     }
-    public Date getdob() {
+    public String getdob() {
         return dob;
     }
-    public void setdob(Date dob) {
+    public void setdob(String dob) {
         this.dob = dob;
     }
     public double getBankBalance() {

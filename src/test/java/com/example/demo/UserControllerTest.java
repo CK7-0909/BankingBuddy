@@ -30,8 +30,8 @@ import java.util.List;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@ExtendWith(MockitoExtension.class)
-@WebMvcTest(UserController.class)
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+@AutoConfigureMockMvc
 @RequestMapping("/users") // Specifies base URL for all endpoints /users in this case.
 public class UserControllerTest {
     @Autowired
@@ -44,11 +44,6 @@ public class UserControllerTest {
     @InjectMocks
     private UserController userController;
 
-    @BeforeEach
-    void setUp() {
-        // Manually inject the mock service into the controller
-        userController = new UserController();
-    }
 
 
 //    @PostMapping("/add") // Specifies method mappings to handle requests

@@ -4,8 +4,6 @@ import jakarta.persistence.*;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
-import java.util.Optional;
 
 @Entity
 @Table(name = "userinfo")
@@ -68,9 +66,11 @@ public class User {
     public void setcreditAge(int creditAge) {
         this.creditAge = creditAge;
     }
+
     public int getApplicationId() {
         return applicationId;
     }
+
     public void setApplicationId(int applicationId) {
         this.applicationId = applicationId;
     }

@@ -10,26 +10,28 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.IOException;
 import java.util.*;
 
+import static com.example.demo.User.calculateFinancialScore;
+
 @RestController // Methods returns data to http response
 @RequestMapping("/users") // Specifies base URL for all endpoints /users in this case.
 public class UserController {
     @Autowired
     private UserService userService;
 
-//    @PostMapping("/add") // Specifies method mappings to handle requests
-//    public User addUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String dob) {
-//        return userService.createUser(firstName, lastName, dob);
-//    }
+    @PostMapping("/add") // Specifies method mappings to handle requests
+    public User addUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String dob) {
+        return userService.createUser(firstName, lastName, dob, 0.0, null, 0); // To create an account we don't need the last 3 fields
+    }
 
-//    @GetMapping("/getByapplicationId")
-//    public User getUserByApplicationId(@RequestParam int applicationId) {
-//        return userService.getUserbyapplicantId(applicationId);
-//    }
-//
-//    @PutMapping("/update/{id}")
-//    public User updateUser(@PathVariable int id, @RequestBody User updateUser) { // use @RequestBody User user to update info in JSON
-//        return userService.updateUser(id, updateUser);
-//    }
+    @GetMapping("/getByapplicationId")
+    public User getUserByApplicationId(@RequestParam int applicationId) {
+        return userService.getUserbyapplicantId(applicationId);
+    }
+
+    @PutMapping("/update/{id}")
+    public User updateUser(@PathVariable int id, @RequestBody User updateUser) { // use @RequestBody User user to update info in JSON
+        return userService.updateUser(id, updateUser);
+    }
 
     @DeleteMapping("/delete/{id}")
     public void deleteUser(@PathVariable int id) {
@@ -71,7 +73,17 @@ public class UserController {
         return excelReadCount;
     }
 
+    @PutMapping("/creditScore/{id}")
+    public User getCreditScore(
+            @PathVariable int id,
+            @RequestParam int creditAge,
+            @RequestParam double bankBalance,
+            @RequestParam String dob
+            ) {
 
+        double creditScore = calculateFinancialScore(creditAge, bankBalance, dob);
+        return userService.updateUserCreditScore(id, creditScore);
+    }
 
 
 }

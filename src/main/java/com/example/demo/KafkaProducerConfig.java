@@ -14,7 +14,7 @@
 //import org.springframework.kafka.support.serializer.JsonSerializer;  // Corrected import (no ErrorHandlingSerializer)
 //
 //@Configuration
-//public class KafkaStreamProcessor {
+//public class KafkaProducerConfig {
 //
 //    @Value(value = "${spring.kafka.bootstrap-server}")
 //    private String bootstrapAddress;

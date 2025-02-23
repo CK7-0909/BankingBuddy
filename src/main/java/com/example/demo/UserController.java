@@ -38,7 +38,7 @@ public class UserController {
         userService.deleteUser(id);
     }
 
-    private int excelReadCount;
+    private int excelReadCount = 0;
     @Autowired
     public KafkaProducer kafkaProducer;
     @Autowired
@@ -47,8 +47,8 @@ public class UserController {
     public void kafkaMessage(@RequestBody MultipartFile file) {
         try {
             List<User> users = excelReader.readExcelData(file);
-            excelReadCount = users.size();
-            System.out.println(excelReadCount);
+            //excelReadCount = users.size();
+            //System.out.println(excelReadCount);
             for (User user : users) {
                 kafkaProducer.sendMessage(user);
             }

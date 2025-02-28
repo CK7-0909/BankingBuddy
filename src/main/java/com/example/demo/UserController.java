@@ -15,8 +15,13 @@ import static com.example.demo.User.calculateFinancialScore;
 @RestController // Methods returns data to http response
 @RequestMapping("/users") // Specifies base URL for all endpoints /users in this case.
 public class UserController {
-    @Autowired
-    private UserService userService;
+//    @Autowired //Field Injection is not recommended since it promotes tight coupling
+    private final UserService userService;
+
+    public UserController(UserService userService) {
+        this.userService = userService;
+    }
+
 
     @PostMapping("/add") // Specifies method mappings to handle requests
     public User addUser(@RequestParam String firstName, @RequestParam String lastName, @RequestParam String dob) {

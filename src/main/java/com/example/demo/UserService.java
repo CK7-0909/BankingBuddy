@@ -10,8 +10,12 @@ import java.util.Date;
 @Service // Basically this is used for Business logic so that we keep the database info securely in repo(database access) and request handling in controller.
 public class UserService {
 
-    @Autowired // This basically ties up the program together to perform dependency injection
-    private  Repository repository;
+   // @Autowired // This basically ties up the program together to perform dependency injection
+    private final Repository repository;
+
+    public UserService(Repository repository) {
+        this.repository = repository;
+    }
 
     // Used for PostMapping
     public User createUser(String firstname, String lastname, String dob, double bankBalance, String country, int creditAge) {
